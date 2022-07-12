@@ -2,15 +2,17 @@
 
 const id = document.querySelector("#id"), 
   psword = document.querySelector("#psword"), 
-  loginBtn = document.querySelector("button");
+  loginBtn = document.querySelector("#button");
 
 loginBtn.addEventListener("click", login);
 
-function login(){
+function login(event){
+  // event.preventDefault();/////////
   const req = {
     id: id.value, 
     psword: psword.value,
   };
+  console.log("req :", req);
 
   fetch("/login", {
     method:"POST",
@@ -20,8 +22,9 @@ function login(){
     body: JSON.stringify(req),
   }).then((res) => res.json())
   .then((res) => {
+    console.log("res", res);
     if(res.success){
-      console.log(res);
+      console.log("여기");
       location.href = "/";
     } else {
       alert(res.msg);
