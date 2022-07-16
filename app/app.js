@@ -4,6 +4,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+// var scissors = require('scissors');
 
 //라우팅
 const PORT = 3000;
@@ -20,6 +21,34 @@ app.use(bodyParser.urlencoded({extended: true}));
 const home = require("./src/routes/home")
 app.use("/", home); // use -> 미들 웨어를 등록해주는 메소드
 module.exports = app;
+
+
+/////////// split.pdf.js
+// const fs = require('fs');
+// const path = require('path');
+// const { PDFDocument } = require('pdf-lib');
+
+// const splitPDF = async (pdfFilePath, outputDirectory) => {
+//   const data = await fs.promises.readFile(pdfFilePath);
+//   const readPdf = await PDFDocument.load(data);
+//   const { length } = readPdf.getPages();
+
+//   for (let i = 0, n = length; i < n; i += 1) {
+//     const writePdf = await PDFDocument.create();
+//     const [page] = await writePdf.copyPages(readPdf, [i]);
+//     writePdf.addPage(page);
+//     const bytes = await writePdf.save();
+//     const outputPath = path.join(outputDirectory, `Invoice_Page_${i + 1}.pdf`);
+//     await fs.promises.writeFile(outputPath, bytes);
+//     console.log(`Added ${outputPath}`);
+//   }
+// };
+
+// splitPDF('pdf_practice_2.pdf', './pdf_single_pages').then(() =>
+//   console.log('All invoices have been split!')
+// );
+/////////// split.pdf.js
+
 
 
 

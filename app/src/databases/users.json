@@ -1,0 +1,5 @@
+{
+  "id": ["abc", "ded", "dfdf"], 
+  "psword" : ["123", "1234","12345"],
+  "name" : ["first_name", "second_name", "third_name"]
+}
