@@ -32,7 +32,7 @@ class UserStorage {
 
 
   static getUsers( isAll, ...fields){
-    // const users = this.#users;
+    // const users = this.#users; 
     return fs.readFile("./src/databases/users.json")
     .then((data) => { 
       return this.#getUsers(data, isAll, fields);
@@ -51,11 +51,15 @@ class UserStorage {
 
   static async save(userInfo){
     const users = await this.getUsers(true);
-    console.log(users);
+    if (users.id.includes(userInfo.id)){
+      throw "이미 존재하는 아이디입니다.";
+    }
+    users.id.push(userInfo.id);
+    users.name.push(userInfo.name);
+    users.psword.push(userInfo.psword);
     fs.writeFile("./src/databases/users.json", JSON.stringify(users));
-
+    return {success: true}
+    }
   }
-
-}
 
 module.exports = UserStorage;

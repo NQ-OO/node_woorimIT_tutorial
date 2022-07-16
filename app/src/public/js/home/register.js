@@ -17,7 +17,7 @@ function register(){
     name: name.value, 
     psword: psword.value,
   };
-  console.log(req);
+  console.log("req : ", req);
 
   fetch("/register", {
     method:"POST",
@@ -27,7 +27,7 @@ function register(){
     body: JSON.stringify(req),
   }).then((res) => res.json())
   .then((res) => {
-    console.log("res", res);
+    console.log("res : ", res);
     if(res.success){
       console.log("여기");
       location.href = "/login";
